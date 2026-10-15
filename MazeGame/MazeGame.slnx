@@ -1,0 +1,13 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="../docs/ReadMe.md" />
+    <File Path="../docs/todo.md" />
+  </Folder>
+  <Project Path="../Engine/Engine.vcxproj" Id="ac5a3062-44c2-426f-a093-cd94eaf1b6c2" />
+  <Project Path="MazeGame.vcxproj" Id="1d3b6b61-8486-4469-be51-fb5be281398a" />
+</Solution>
