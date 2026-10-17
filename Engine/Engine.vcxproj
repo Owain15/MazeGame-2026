@@ -26,6 +26,26 @@
       <Platform>ARM64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="core\application.cpp">
+      <ObjectFileName>$(IntDir)core_application.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="core\window.cpp">
+      <ObjectFileName>$(IntDir)core_window.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="windows\application.cpp">
+      <ObjectFileName>$(IntDir)windows_application.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="windows\window.cpp">
+      <ObjectFileName>$(IntDir)windows_window.obj</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\application.h" />
+    <ClInclude Include="core\window.h" />
+    <ClInclude Include="windows\application.h" />
+    <ClInclude Include="windows\window.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -35,13 +55,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -54,20 +74,20 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -98,8 +118,28 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(MSBuildProjectDirectory)\builds\$(Platform)\$(Configuration)\ </OutDir>
-    <IntDir>$(MSBuildProjectDirectory)\builds\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\</OutDir>
+    <IntDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\bin-init</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <OutDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\</OutDir>
+    <IntDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\bin-init</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <OutDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\</OutDir>
+    <IntDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\bin-init</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\</OutDir>
+    <IntDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\bin-init</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\</OutDir>
+    <IntDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\bin-init</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\</OutDir>
+    <IntDir>$(ProjectDir)builds\$(Configuration)\$(LibrariesArchitecture)\bin-init</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -203,8 +243,6 @@
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
