@@ -6,7 +6,7 @@ int main()
 {
 
 
-	Engine::Windows::Application app;
+	SeraphimEngine::Windows::Application app;
 	
 	app.Run();
 

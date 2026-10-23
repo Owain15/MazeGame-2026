@@ -18,12 +18,38 @@
 <input type="checkbox" disabled> <strong>Open A Window</strong> <br>
 <div style="margin-left: 25px;">
   <input type="checkbox" disabled checked> Engine.Window interface<br>
-  <input type="checkbox"> Windows <br>
-</div>   
+  <input type="checkbox" disabled> Windows <br>
+</div>  
 
-<input type="checkbox" disabled> <strong>Draw A Triangle</strong> <br>
+<input type="checkbox" disabled> <strong>Events System</strong> <br>
 <div style="margin-left: 25px;">
-    <input type="checkbox" disabled> Engine::core - Render interface<br>
-    <input type="checkbox" disabled> Winodows <br>
+  
+  <input type="checkbox" disabled> Window Events <br>
+  <div style="margin-left: 25px;">
+  </div>
+  
+  <input type="checkbox" disabled> Input Events  <br>
+  <div style="margin-left: 25px;">
+  </div>
+  
+  <input type="checkbox" disabled> Layer Events  <br>
+  <div style="margin-left: 25px;">
+  </div>
+</div>  
+
+<input type="checkbox" disabled> <strong>Renderinge</strong> <br>
+<div style="margin-left: 25px;">
+   
+   <input type="checkbox" disabled> Engine::core - Render interface<br>
+        <div style="margin-left: 25px;">
+        <input type="checkbox" disabled> Winodows <br>
+        </div>
+   
+   <input type="checkbox" disabled> Draw <br>
+        <div style="margin-left: 25px;">
+        <input type="checkbox" disabled> triangle <br>
+        <input type="checkbox" disabled> square <br>
+        </div>
+
 </div>
 <hr>
