@@ -1,6 +1,10 @@
 
-#include "application.h"
-#include "logging.h"	
+#include "application.h"	
+
+
+#include "logging.h"
+#include "core/events_dispatcher.h"
+#include "core/events_window.h"
 
 namespace SeraphimEngine::Windows
 {
@@ -9,6 +13,22 @@ namespace SeraphimEngine::Windows
 	{
 		Logging::Init();
 		Seraphim_Log_CORE_INFO("Logging Initialized Subsystem Successfully.");
+
+		m_Window.SetEventCallback([](SeraphimEngine::Events::Event& event)
+			{
+				SeraphimEngine::Events::EventDispatcher dispatcher(event);
+
+				dispatcher.Dispatch<SeraphimEngine::Events::Window::ResizeEvent>(
+					[](SeraphimEngine::Events::Window::ResizeEvent& resize)
+					{
+						Seraphim_Log_CORE_INFO(
+							"Window resized to {}x{}",
+							resize.GetWidth(),
+							resize.GetHeight());
+						return false;
+					});
+			});
+
 
 	}
 

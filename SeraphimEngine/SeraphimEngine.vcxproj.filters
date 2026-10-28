@@ -22,6 +22,15 @@
     <Filter Include="core\logging">
       <UniqueIdentifier>{7237eda2-d9b6-432a-9577-42bd7ccccdd1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\events">
+      <UniqueIdentifier>{6f2b25ce-9383-4023-b7e4-37d06e63a33d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\events\window">
+      <UniqueIdentifier>{4cf6cf73-f979-49d8-9aa8-81b6ea916fa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\events\dispacher">
+      <UniqueIdentifier>{459bc3e5-1e8a-447d-8e99-26f6659517cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\window.cpp">
@@ -39,6 +48,15 @@
     <ClCompile Include="core\logging.cpp">
       <Filter>core\logging</Filter>
     </ClCompile>
+    <ClCompile Include="core\events.cpp">
+      <Filter>core\events</Filter>
+    </ClCompile>
+    <ClCompile Include="core\events_window.cpp">
+      <Filter>core\events\window</Filter>
+    </ClCompile>
+    <ClCompile Include="core\events_dispatcher.cpp">
+      <Filter>core\events\dispacher</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\window.h">
@@ -55,6 +73,18 @@
     </ClInclude>
     <ClInclude Include="core\logging.h">
       <Filter>core\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="core\events.h">
+      <Filter>core\events</Filter>
+    </ClInclude>
+    <ClInclude Include="core\events_window.h">
+      <Filter>core\events\window</Filter>
+    </ClInclude>
+    <ClInclude Include="core\events_dispatcher.h">
+      <Filter>core\events\dispacher</Filter>
+    </ClInclude>
+    <ClInclude Include="core\events_types.h">
+      <Filter>core\events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

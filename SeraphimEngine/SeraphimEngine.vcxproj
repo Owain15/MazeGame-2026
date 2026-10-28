@@ -30,6 +30,9 @@
     <ClCompile Include="core\application.cpp">
       <ObjectFileName>$(IntDir)core_application.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="core\events.cpp" />
+    <ClCompile Include="core\events_dispatcher.cpp" />
+    <ClCompile Include="core\events_window.cpp" />
     <ClCompile Include="core\logging.cpp" />
     <ClCompile Include="core\window.cpp">
       <ObjectFileName>$(IntDir)core_window.obj</ObjectFileName>
@@ -43,6 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\application.h" />
+    <ClInclude Include="core\events.h" />
+    <ClInclude Include="core\events_dispatcher.h" />
+    <ClInclude Include="core\events_types.h" />
+    <ClInclude Include="core\events_window.h" />
     <ClInclude Include="core\logging.h" />
     <ClInclude Include="core\window.h" />
     <ClInclude Include="windows\application.h" />
