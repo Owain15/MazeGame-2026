@@ -9,7 +9,9 @@
 namespace SeraphimEngine::Windows
 {
 	Application::Application()
-		: m_Window(L"MazeGame", 1280, 720), m_Running(true)
+		: m_Window(L"MazeGame", 1280, 720), 
+		m_Renderer(m_Window.GetHandle()),
+		m_Running(true)
 	{
 		Logging::Init();
 		Seraphim_Log_CORE_INFO("Logging Initialized Subsystem Successfully.");
@@ -43,6 +45,9 @@ namespace SeraphimEngine::Windows
 			{
 				m_Running = false;
 			}
+
+			m_Renderer.DrawTriangle(); // Call the DrawTriangle method of the Renderer	
+
 			// Your game engine / application logic goes here
 			// (e.g., m_Window.GetHandle() can be passed to DirectX or Vulkan)
 			Sleep(16); // Simple cap to ~60fps for testing

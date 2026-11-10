@@ -1,5 +1,6 @@
 
 #include "window.h"
+#include "renderer.h"
 
 //#include "logging.h"
 //#include "core/events_dispatcher.h"
@@ -20,6 +21,8 @@ namespace SeraphimEngine::Windows
 			
 			SeraphimEngine::Windows::Window m_Window;
 			
+			SeraphimEngine::Windows::Renderer m_Renderer;
+
 			bool m_Running;
 	};
 }

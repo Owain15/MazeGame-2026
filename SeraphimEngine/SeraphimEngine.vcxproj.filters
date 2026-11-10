@@ -31,6 +31,15 @@
     <Filter Include="core\events\dispacher">
       <UniqueIdentifier>{459bc3e5-1e8a-447d-8e99-26f6659517cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\renderer">
+      <UniqueIdentifier>{57b7bb93-aefd-4392-8ddd-60315686b828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows\renderer">
+      <UniqueIdentifier>{adefb870-adde-47ca-9303-f4541d4d491a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows\renderer\shadders">
+      <UniqueIdentifier>{b70fe23a-f7b6-4bbb-9054-d1924d56042c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\window.cpp">
@@ -56,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="core\events_dispatcher.cpp">
       <Filter>core\events\dispacher</Filter>
+    </ClCompile>
+    <ClCompile Include="windows\renderer.cpp">
+      <Filter>Windows\renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,5 +98,19 @@
     <ClInclude Include="core\events_types.h">
       <Filter>core\events</Filter>
     </ClInclude>
+    <ClInclude Include="core\renderer.h">
+      <Filter>core\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="windows\renderer.h">
+      <Filter>Windows\renderer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="windows\triangle.frag">
+      <Filter>Windows\renderer\shadders</Filter>
+    </None>
+    <None Include="windows\triangle.vert">
+      <Filter>Windows\renderer\shadders</Filter>
+    </None>
   </ItemGroup>
 </Project>

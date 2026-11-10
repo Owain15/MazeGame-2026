@@ -205,10 +205,20 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\SeraphimEngine\vendor\ANGLE\ARM64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libEGL.dll.lib;libGLESv2.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
+    <PostBuildEvent>
+      <Command>xcopy /Y /D /I "$(ProjectDir)..\SeraphimEngine\vendor\ANGLE\ARM64\bin\*.dll" "$(OutDir)" 
+if not exist "$(OutDir)shaders" mkdir "$(OutDir)shaders"
+
+copy /Y "$(ProjectDir)..\SeraphimEngine\windows\triangle.vert" "$(OutDir)shaders\"
+
+copy /Y "$(ProjectDir)..\SeraphimEngine\windows\triangle.frag" "$(OutDir)shaders\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -224,10 +234,20 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\SeraphimEngine\vendor\ANGLE\ARM64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libEGL.dll.lib;libGLESv2.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
+    <PostBuildEvent>
+      <Command>xcopy /Y /D /I "$(ProjectDir)..\SeraphimEngine\vendor\ANGLE\ARM64\bin\*.dll" "$(OutDir)" 
+if not exist "$(OutDir)shaders" mkdir "$(OutDir)shaders"
+
+copy /Y "$(ProjectDir)..\SeraphimEngine\windows\triangle.vert" "$(OutDir)shaders\"
+
+copy /Y "$(ProjectDir)..\SeraphimEngine\windows\triangle.frag" "$(OutDir)shaders\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
