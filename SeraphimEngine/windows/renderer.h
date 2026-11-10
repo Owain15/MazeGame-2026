@@ -12,6 +12,7 @@
 
 namespace SeraphimEngine::Windows 
 {
+
 	class Renderer final : public  SeraphimEngine::Renderer
 	{
 		public:
@@ -20,8 +21,11 @@ namespace SeraphimEngine::Windows
 
 			~Renderer() override;
 
-			void DrawTriangle() override;
+			void BeginFrame(Color clearColor) override;
+			void DrawRect(Rect rect, Color color) override;
+			void EndFrame() override;
 
+			
 		private:
 		
 			struct GraphicsState; // EGL/GLES

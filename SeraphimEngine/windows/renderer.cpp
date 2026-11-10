@@ -213,29 +213,56 @@ namespace SeraphimEngine::Windows
 		}
 	}
 
-	void Renderer::DrawTriangle()
+	void Renderer::BeginFrame(Color clearColor)
 	{
-		EGLint width = 0;
-		EGLint height = 0;
-
+		EGLint width = 0, height = 0;
 		eglQuerySurface(m_State->display, m_State->surface, EGL_WIDTH, &width);
 		eglQuerySurface(m_State->display, m_State->surface, EGL_HEIGHT, &height);
 
-		glViewport(0, 0, width, height);
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
+		if(width > 0 && height > 0)
+		{ glViewport(0, 0, width, height); }
 		
+		glClearColor(clearColor.r, clearColor.g, clearColor.b, clearColor.a);
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+
+	void Renderer::DrawRect(Rect rect, Color color)
+	{
+		
+		EGLint width = 0, height = 0;
+		
+		eglQuerySurface(m_State->display, m_State->surface, EGL_WIDTH, &width);
+		eglQuerySurface(m_State->display, m_State->surface, EGL_HEIGHT, &height);
+		
+		if(width < 0 || height <= 0)
+		{ return; }
+
+		const GLfloat left = 2.0f * rect.x / width - 1.0f;
+		const GLfloat right = 2.0f * (rect.x + rect.width) / width - 1.0f;
+		const GLfloat top = 1.0f - 2.0f * rect.y / height;
+		const GLfloat bottom = 1.0f - 2.0f * (rect.y + rect.height) / height;
+
+		const GLfloat vertices[] = {
+			left, top,    left, bottom, right, top,
+			right, top,   left, bottom, right, bottom
+		};
 
 		glUseProgram(m_State->program);
 		glBindVertexArray(m_State->vao);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glBindBuffer(GL_ARRAY_BUFFER, m_State->vbo);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STREAM_DRAW);
+
+		const GLint colorLocation = glGetUniformLocation(m_State->program, "uColor");
+		glUniform4f(colorLocation, color.r, color.g, color.b, color.a);
+
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 		glBindVertexArray(0);
-		
-		
-		
+
+	}
+
+	void Renderer::EndFrame()
+	{
 		eglSwapBuffers(m_State->display, m_State->surface);
-	
 	}
 
 }

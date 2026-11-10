@@ -46,7 +46,9 @@ namespace SeraphimEngine::Windows
 				m_Running = false;
 			}
 
-			m_Renderer.DrawTriangle(); // Call the DrawTriangle method of the Renderer	
+			m_Renderer.BeginFrame({ 0.1f, 0.1f, 0.1f, 1.0f });	
+			m_Renderer.DrawRect({ 100.0f, 100.0f, 200.0f, 150.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
+			m_Renderer.EndFrame();
 
 			// Your game engine / application logic goes here
 			// (e.g., m_Window.GetHandle() can be passed to DirectX or Vulkan)
