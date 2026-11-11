@@ -35,7 +35,7 @@ namespace SeraphimEngine::Windows
 	};
 
 	Renderer::Renderer(HWND windowHandle)
-		: m_State(std::make_unique<GraphicsState>())	
+		: m_State(std::make_unique<GraphicsState>())
 	{
 		// Include EGL/egl.h and EGL/eglext_angle.h in renderer.cpp.
 
@@ -213,8 +213,10 @@ namespace SeraphimEngine::Windows
 		}
 	}
 
-	void Renderer::BeginFrame(Color clearColor)
+	void Renderer::BeginFrame(Color clearColor, const Camera2D& camera)
 	{
+		m_Camera = camera;
+
 		EGLint width = 0, height = 0;
 		eglQuerySurface(m_State->display, m_State->surface, EGL_WIDTH, &width);
 		eglQuerySurface(m_State->display, m_State->surface, EGL_HEIGHT, &height);
@@ -234,13 +236,18 @@ namespace SeraphimEngine::Windows
 		eglQuerySurface(m_State->display, m_State->surface, EGL_WIDTH, &width);
 		eglQuerySurface(m_State->display, m_State->surface, EGL_HEIGHT, &height);
 		
-		if(width < 0 || height <= 0)
+		if(width <= 0 || height <= 0)
 		{ return; }
 
-		const GLfloat left = 2.0f * rect.x / width - 1.0f;
-		const GLfloat right = 2.0f * (rect.x + rect.width) / width - 1.0f;
-		const GLfloat top = 1.0f - 2.0f * rect.y / height;
-		const GLfloat bottom = 1.0f - 2.0f * (rect.y + rect.height) / height;
+		const float x = (rect.x - m_Camera.x) * m_Camera.zoom;
+		const float y = (rect.y - m_Camera.y) * m_Camera.zoom;
+		const float rectWidth = rect.width * m_Camera.zoom;
+		const float rectHeight = rect.height * m_Camera.zoom;
+
+		const GLfloat left = 2.0f * x / width - 1.0f;
+		const GLfloat right = 2.0f * (x + rectWidth) / width - 1.0f;
+		const GLfloat top = 1.0f - 2.0f * y / height;
+		const GLfloat bottom = 1.0f - 2.0f * (y + rectHeight) / height;
 
 		const GLfloat vertices[] = {
 			left, top,    left, bottom, right, top,

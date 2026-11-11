@@ -11,6 +11,7 @@ namespace SeraphimEngine::Windows
 	Application::Application()
 		: m_Window(L"MazeGame", 1280, 720), 
 		m_Renderer(m_Window.GetHandle()),
+		m_Camera(SeraphimEngine::Camera2D()),
 		m_Running(true)
 	{
 		Logging::Init();
@@ -46,8 +47,9 @@ namespace SeraphimEngine::Windows
 				m_Running = false;
 			}
 
-			m_Renderer.BeginFrame({ 0.1f, 0.1f, 0.1f, 1.0f });	
+			m_Renderer.BeginFrame({ 0.1f, 0.1f, 0.1f, 1.0f },m_Camera);	
 			m_Renderer.DrawRect({ 100.0f, 100.0f, 200.0f, 150.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
+			m_Renderer.DrawRect({ 400.0f, 200.0f, 50.0f, 50.0f }, { 0.0f, 1.0f, 1.0f, 1.0f });
 			m_Renderer.EndFrame();
 
 			// Your game engine / application logic goes here

@@ -22,6 +22,7 @@ namespace SeraphimEngine::Windows
 			SeraphimEngine::Windows::Window m_Window;
 			
 			SeraphimEngine::Windows::Renderer m_Renderer;
+			SeraphimEngine::Camera2D m_Camera;
 
 			bool m_Running;
 	};
