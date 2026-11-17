@@ -40,6 +40,12 @@
     <Filter Include="Windows\renderer\shadders">
       <UniqueIdentifier>{b70fe23a-f7b6-4bbb-9054-d1924d56042c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\components">
+      <UniqueIdentifier>{7117a518-729d-4ab7-918c-923be6a82883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\components\object">
+      <UniqueIdentifier>{2afa582d-f462-4a7e-b08b-c1280f4f3bf7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\window.cpp">
@@ -68,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="windows\renderer.cpp">
       <Filter>Windows\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="core\object.cpp">
+      <Filter>core\components\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="windows\renderer.h">
       <Filter>Windows\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="core\object.h">
+      <Filter>core\components\object</Filter>
+    </ClInclude>
+    <ClInclude Include="core\renderer_structs.h">
+      <Filter>core\renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

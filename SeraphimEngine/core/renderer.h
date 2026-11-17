@@ -1,18 +1,11 @@
 
 #pragma once
 
+#include "renderer_structs.h"
+#include "object.h"
+
 namespace SeraphimEngine
 {
-
-	struct Camera2D
-	{
-		float x = 0.0f;
-		float y = 0.0f;
-		float zoom = 1.0f;
-	};
-
-	struct Color { float r, g, b, a; };
-	struct Rect { float x, y, width, height; };
 
 	class Renderer
 	{
@@ -21,10 +14,13 @@ namespace SeraphimEngine
 			virtual ~Renderer() = default;
 			
 			virtual void BeginFrame(Color clearColor, const Camera2D& camera) = 0;
-			virtual void DrawRect(Rect rect, Color color) = 0;
 			virtual void EndFrame() = 0;
-	
-		protected:
+			
+			virtual void DrawRect(Rect rect, Color color) = 0;
+			void DrawObject(const SeraphimEngine::Object& object)
+			{ DrawRect(object.GetRect(),object.GetColor()); };
+		
+	protected:
 
 			SeraphimEngine::Camera2D m_Camera;
 

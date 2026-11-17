@@ -2,5 +2,33 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\testObject.cpp">
+      <Filter>components\objects\testObjects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="layers">
+      <UniqueIdentifier>{34a30f8a-dc9f-4e55-b178-4a07ad1cbc88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="layers\levels">
+      <UniqueIdentifier>{b67401ba-d5ab-4d5a-b2a5-30eabbe5e530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="layers\menus">
+      <UniqueIdentifier>{a63f43e8-ff14-4df2-9d70-86490ed27add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components">
+      <UniqueIdentifier>{ee6e091b-db16-446a-aa72-9180a6946534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components\objects">
+      <UniqueIdentifier>{1f47fc80-fcc4-4751-9130-0878a1f0091f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components\objects\testObjects">
+      <UniqueIdentifier>{1633a6e6-3f5d-4aa7-ad76-59a0ca4965d8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testObject.h">
+      <Filter>components\objects\testObjects</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

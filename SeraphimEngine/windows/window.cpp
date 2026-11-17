@@ -25,12 +25,27 @@ namespace SeraphimEngine::Windows
 
 		if (window && message == WM_SIZE && window->m_EventCallback)
 		{
-			const unsigned int width = LOWORD(lParam);
-			const unsigned int height = HIWORD(lParam);
+			if(wParam == SIZE_MINIMIZED)
+			{
+				SeraphimEngine::Events::Window::Minimized event;
+				window->m_EventCallback(event);
+			}
+			else
+			{
+				const unsigned int width = LOWORD(lParam);
+				const unsigned int height = HIWORD(lParam);
 
-			SeraphimEngine::Events::Window::ResizeEvent event(width, height);
+				SeraphimEngine::Events::Window::Resize event(width, height);
+				window->m_EventCallback(event);
+			}
+		}
+
+		if (window && message == WM_CLOSE && window->m_EventCallback)
+		{
+			SeraphimEngine::Events::Window::Close event;
 			window->m_EventCallback(event);
 		}
+
 
 		return DefWindowProc(hwnd, message, wParam, lParam);
 	}
@@ -90,13 +105,18 @@ namespace SeraphimEngine::Windows
 		m_EventCallback = callback;
 	}
 
-	SeraphimEngine::Events::Window::ResizeEvent Window::GetResizeEvent() const
+	SeraphimEngine::Events::Window::Resize Window::GetWindowResizeEvent() const
 	{
 		RECT rect;
 		GetClientRect(m_Handle, &rect);
 		int width = rect.right - rect.left;
 		int height = rect.bottom - rect.top;
-		return SeraphimEngine::Events::Window::ResizeEvent(width, height);
+		return SeraphimEngine::Events::Window::Resize(width, height);
+	}
+
+	SeraphimEngine::Events::Window::Close Window::GetWindowCloseEvent() const
+	{
+		return SeraphimEngine::Events::Window::Close();
 	}
 
 }

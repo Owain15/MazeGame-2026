@@ -5,14 +5,14 @@
 
 namespace SeraphimEngine::Events::Window
 {
-    class ResizeEvent : public Event
+
+    class Resize : public Event
     {
         public:
 
-            ResizeEvent(unsigned int width, unsigned int height)
+            Resize(unsigned int width, unsigned int height)
             : m_Width(width), m_Height(height)
-            {
-            }
+            {}
 
             inline unsigned int GetWidth() const { return m_Width; }
             inline unsigned int GetHeight() const { return m_Height; }
@@ -30,6 +30,26 @@ namespace SeraphimEngine::Events::Window
 
             unsigned int m_Width, m_Height;
 
+    };
+
+    class Close : public Event
+    {
+        public:
+
+            static EventType GetStaticType() { return EventType::WindowClose; }
+            EventType GetEventType() const override { return GetStaticType(); }
+            const char* GetName() const override { return "WindowClose"; }
+
+    };
+
+    class Minimized : public Event
+    {
+        public:
+            static EventType GetStaticType() { return EventType::WindowMinimized; }
+            EventType GetEventType() const override { return GetStaticType(); }
+            const char* GetName() const override { return "WindowMinimized"; }
+
+                
     };
 
 }

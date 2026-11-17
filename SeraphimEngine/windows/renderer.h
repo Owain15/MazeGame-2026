@@ -22,8 +22,9 @@ namespace SeraphimEngine::Windows
 			~Renderer() override;
 
 			void BeginFrame(Color clearColor, const Camera2D& camera) override;
-			void DrawRect(Rect rect, Color color) override;
 			void EndFrame() override;
+
+			void DrawRect(Rect rect, Color color) override;
 
 			
 		private:

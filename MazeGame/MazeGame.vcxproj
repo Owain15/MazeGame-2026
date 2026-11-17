@@ -251,11 +251,15 @@ copy /Y "$(ProjectDir)..\SeraphimEngine\windows\triangle.frag" "$(OutDir)shaders
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\testObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeraphimEngine\SeraphimEngine.vcxproj">
       <Project>{ac5a3062-44c2-426f-a093-cd94eaf1b6c2}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

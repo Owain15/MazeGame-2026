@@ -23,7 +23,8 @@ namespace SeraphimEngine::Windows
 			
 			void SetEventCallback(EventCallback callback);
 
-			SeraphimEngine::Events::Window::ResizeEvent GetResizeEvent() const;
+			SeraphimEngine::Events::Window::Resize GetWindowResizeEvent() const;
+			SeraphimEngine::Events::Window::Close GetWindowCloseEvent() const;
 
 		private:
 

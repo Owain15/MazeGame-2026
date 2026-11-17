@@ -8,7 +8,7 @@ namespace SeraphimEngine::Events
 		None = 0,
 
 		//Window Events
-		WindowClose, WindowResize, WindowFocus,
+		WindowClose, WindowResize, WindowMinimized, WindowFocus,
 		//Keyboard Events
 		KeyPressed, KeyReleased,
 		//Mouse Events
