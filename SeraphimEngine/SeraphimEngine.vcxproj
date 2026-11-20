@@ -50,6 +50,7 @@
     <ClInclude Include="core\application.h" />
     <ClInclude Include="core\events.h" />
     <ClInclude Include="core\events_dispatcher.h" />
+    <ClInclude Include="core\events_keybord.h" />
     <ClInclude Include="core\events_types.h" />
     <ClInclude Include="core\events_window.h" />
     <ClInclude Include="core\logging.h" />

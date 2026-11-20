@@ -5,6 +5,12 @@
     <ClCompile Include="src\testObject.cpp">
       <Filter>components\objects\testObjects</Filter>
     </ClCompile>
+    <ClCompile Include="src\wall.cpp">
+      <Filter>components\objects\wall</Filter>
+    </ClCompile>
+    <ClCompile Include="src\player.cpp">
+      <Filter>components\player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="layers">
@@ -25,10 +31,25 @@
     <Filter Include="components\objects\testObjects">
       <UniqueIdentifier>{1633a6e6-3f5d-4aa7-ad76-59a0ca4965d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="components\objects\wall">
+      <UniqueIdentifier>{df3fd69b-d180-454f-aae2-4742d9dfb71e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components\player">
+      <UniqueIdentifier>{c05deef8-8b0e-4cbc-932a-2e3cc8f2b708}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testObject.h">
       <Filter>components\objects\testObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\componentes.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\wall.h">
+      <Filter>components\objects\wall</Filter>
+    </ClInclude>
+    <ClInclude Include="src\player.h">
+      <Filter>components\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

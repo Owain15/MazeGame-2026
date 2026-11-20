@@ -17,6 +17,8 @@ namespace SeraphimEngine
 			Rect GetRect() const { return m_Rect;  }
 			Color GetColor() const { return m_Color; }
 
+			void SetPosition(float x, float y) { m_Rect.x = x; m_Rect.y = y; }
+
 		protected:
 
 			Rect m_Rect;

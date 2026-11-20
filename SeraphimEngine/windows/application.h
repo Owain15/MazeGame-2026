@@ -14,7 +14,7 @@ namespace SeraphimEngine::Windows
 	{
 		public:
 			
-			Application(SeraphimEngine::Object& testObject);
+			Application( SeraphimEngine::Object& player, SeraphimEngine::Object& testObject);
 			~Application();
 		
 			void Run();
@@ -37,6 +37,16 @@ namespace SeraphimEngine::Windows
 			bool m_Paused;
 			bool m_Minimized;
 
+			SeraphimEngine::Object& m_Player;
 			SeraphimEngine::Object& m_Object;
+
+			struct Inputs
+			{
+				bool Up = false;
+				bool Down = false;
+				bool Left = false;
+				bool Right = false;
+
+			} m_Inputs;
 	};
 }

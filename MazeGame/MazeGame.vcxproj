@@ -251,7 +251,9 @@ copy /Y "$(ProjectDir)..\SeraphimEngine\windows\triangle.frag" "$(OutDir)shaders
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\testObject.cpp" />
+    <ClCompile Include="src\wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeraphimEngine\SeraphimEngine.vcxproj">
@@ -259,7 +261,10 @@ copy /Y "$(ProjectDir)..\SeraphimEngine\windows\triangle.frag" "$(OutDir)shaders
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\componentes.h" />
+    <ClInclude Include="src\player.h" />
     <ClInclude Include="src\testObject.h" />
+    <ClInclude Include="src\wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

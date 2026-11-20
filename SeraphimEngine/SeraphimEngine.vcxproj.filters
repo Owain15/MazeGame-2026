@@ -46,6 +46,9 @@
     <Filter Include="core\components\object">
       <UniqueIdentifier>{2afa582d-f462-4a7e-b08b-c1280f4f3bf7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\events\keybord">
+      <UniqueIdentifier>{be7c29ee-f736-4fed-bf95-810193c4520a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\window.cpp">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="core\renderer_structs.h">
       <Filter>core\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="core\events_keybord.h">
+      <Filter>core\events\keybord</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

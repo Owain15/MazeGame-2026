@@ -5,19 +5,21 @@
 #include "logging.h"
 #include "core/events_dispatcher.h"
 #include "core/events_window.h"
+#include "core/events_keybord.h"
 
 #include <thread>
 #include <chrono>
 
 namespace SeraphimEngine::Windows
 {
-	Application::Application(SeraphimEngine::Object& testObject)
+	Application::Application(SeraphimEngine::Object& player, SeraphimEngine::Object& testObject)
 		: m_Window(L"MazeGame", 1280, 720), 
 		m_Renderer(m_Window.GetHandle()),
 		m_Camera(SeraphimEngine::Camera2D()),
 		m_Running(true),
 		m_Paused(false),
 		m_Minimized(false),
+		m_Player(player),
 		m_Object(testObject)
 	{
 		Logging::Init();
@@ -99,14 +101,92 @@ namespace SeraphimEngine::Windows
 				return true;
 			});
 
-	
+		dispatcher.Dispatch<SeraphimEngine::Events::Keyboard::KeyPressed>(
+			[this](SeraphimEngine::Events::Keyboard::KeyPressed& keyPressed)
+			{
+				Seraphim_Log_CORE_INFO(
+					"{} - keycode: {}",
+					keyPressed.GetName(),
+					keyPressed.GetKeycode());
+
+				switch (keyPressed.GetKeycode())
+				{
+					// Up arrow
+					case 38: 
+					{ m_Inputs.Up    = true; break; }
+					// Down arrow
+					case 40: 
+					{ m_Inputs.Down  = true; break; }
+					// Left arrow
+					case 37: 
+					{ m_Inputs.Left  = true; break; }
+					// Right arrow
+					case 39: 
+					{ m_Inputs.Right = true; break; }
+
+				}
+
+				return false;
+			});
+
+		dispatcher.Dispatch<SeraphimEngine::Events::Keyboard::KeyReleased>(
+			[this](SeraphimEngine::Events::Keyboard::KeyReleased& keyReleased)
+			{
+				Seraphim_Log_CORE_INFO(
+					"{} - keycode: {}",
+					keyReleased.GetName(),
+					keyReleased.GetKeycode());
+
+
+				switch (keyReleased.GetKeycode())
+				{
+					// Up arrow
+					case 38:
+					{ m_Inputs.Up    = false; break; }
+					// Down arrow
+					case 40:
+					{ m_Inputs.Down  = false; break; }
+					// Left arrow
+					case 37:
+					{ m_Inputs.Left  = false; break; }
+					// Right arrow
+					case 39:
+					{ m_Inputs.Right = false; break; }
+				}
+				
+				return false;
+			});
 
 	}
 
 	void Application::UpdateGameState(const float deltaTime)
 	{
+		m_Player.Update(deltaTime);
 		m_Object.Update(deltaTime);
 
+		//// //// temerary movement logic for player object
+		if (m_Inputs.Up)
+		{
+			const auto playerRect = m_Player.GetRect();
+			m_Player.SetPosition(playerRect.x, playerRect.y - 100.0f * deltaTime);
+		}
+		if (m_Inputs.Down)
+		{
+			const auto playerRect = m_Player.GetRect();
+			m_Player.SetPosition(playerRect.x, playerRect.y + 100.0f * deltaTime);
+		}
+		if (m_Inputs.Left)
+		{
+			const auto playerRect = m_Player.GetRect();
+			m_Player.SetPosition(playerRect.x - 100.0f * deltaTime, playerRect.y);
+		}
+		if (m_Inputs.Right)
+		{
+			const auto playerRect = m_Player.GetRect();
+			m_Player.SetPosition(playerRect.x + 100.0f * deltaTime, playerRect.y);
+		}
+
+		//// ////
 	}
 
 	void Application::Render()
@@ -115,6 +195,7 @@ namespace SeraphimEngine::Windows
 		//m_Renderer.DrawRect({ 100.0f, 100.0f, 200.0f, 150.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
 		//m_Renderer.DrawRect({ 400.0f, 200.0f, 50.0f, 50.0f }, { 0.0f, 1.0f, 1.0f, 1.0f });
 		m_Renderer.DrawObject(m_Object);
+		m_Renderer.DrawObject(m_Player);
 		m_Renderer.EndFrame();
 	}
 

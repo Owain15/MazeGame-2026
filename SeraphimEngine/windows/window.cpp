@@ -1,6 +1,8 @@
 
 #include "window.h"
 
+#include "core/events_keybord.h"
+
 namespace SeraphimEngine::Windows
 {
 
@@ -43,6 +45,18 @@ namespace SeraphimEngine::Windows
 		if (window && message == WM_CLOSE && window->m_EventCallback)
 		{
 			SeraphimEngine::Events::Window::Close event;
+			window->m_EventCallback(event);
+		}
+
+		if (window && message == WM_KEYDOWN && window->m_EventCallback)
+		{
+			SeraphimEngine::Events::Keyboard::KeyPressed event(static_cast<int>(wParam));
+			window->m_EventCallback(event);
+		}
+
+		if (window && message == WM_KEYUP && window->m_EventCallback)
+		{
+			SeraphimEngine::Events::Keyboard::KeyReleased event(static_cast<int>(wParam));
 			window->m_EventCallback(event);
 		}
 
